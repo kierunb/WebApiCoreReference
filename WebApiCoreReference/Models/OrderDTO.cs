@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace WebApiCoreReference.Models
 {
-    public class OrderDTO
+    public class OrderDTO // Data Transfer Object
     {
         public int OrderId { get; set; }
-        public decimal? Freight { get; set; }
+        public decimal? Freight { get; set; } //cena
+
+        public decimal? CenaBrutto { get; set; }
+
         public string ShipName { get; set; }
         public string ShipAddress { get; set; }
         public string ShipCity { get; set; }

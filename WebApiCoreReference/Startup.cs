@@ -34,6 +34,11 @@ namespace WebApiCoreReference
             services.AddDbContext<NorthwindContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("NorthwindDB")));
 
+            // enable lazy loading
+            //services.AddDbContext<NorthwindContext>(
+            //    b => b.UseLazyLoadingProxies()
+            //    .UseSqlServer(Configuration.GetConnectionString("NorthwindDB")));
+
             services.AddAutoMapper(typeof(Startup));
             services.AddMediatR(typeof(Startup));
         }

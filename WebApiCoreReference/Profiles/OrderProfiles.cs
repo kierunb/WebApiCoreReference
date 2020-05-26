@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,14 @@ namespace WebApiCoreReference.Profiles
     {
         public OrderProfiles()
         {
-            CreateMap<Database.Orders, Models.OrderDTO>().ReverseMap();
+
+            CreateMap<Database.Customers, Models.CustomerOrdersDTO>()
+                .ForMember(dest => dest.CustomerCity, opt => opt.MapFrom(src => src.City))
+                .ReverseMap();
+            
+            CreateMap<Database.Orders, Models.OrderDTO>()
+                .ForMember(dest => dest.CenaBrutto, opt => opt.MapFrom(src => src.Freight))
+                .ReverseMap();
         }
     }
 }
